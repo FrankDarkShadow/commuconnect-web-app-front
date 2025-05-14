@@ -1,0 +1,123 @@
+/* Estructura general */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f5f5f5;
+}
+
+.logo-container img {
+  height: 50px;                /* Ajusta la altura de la imagen */
+  position: fixed;             /* La imagen se mantiene fija */
+  top: 10px;                   /* Posición desde el borde superior de la ventana */
+  left: 10px;                  /* Posición desde el borde izquierdo de la ventana */
+  z-index: 1000;               /* Asegura que la imagen esté por encima de otros elementos */
+}
+
+.primary-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+-------------------------------
+/* Cuerpo principal */
+.login-main {
+  display: flex;
+  flex: 1;
+  background-color: #ffffff;
+}
+.login-left{
+  width: 50%;                /* El contenedor ocupará el 50% del ancho de la pantalla */
+  height: 90vh;             /* El contenedor tendrá la altura igual a la altura de la ventana */
+  position: fixed;           /* Asegura que el contenedor no se desplace al hacer scroll */
+  bottom: 0;                    /* La imagen se alinea en la parte (inferior )superior */
+  left: 0;                   /* La imagen se alinea a la izquierda */
+}
+.registro-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+---------------- otra mitad
+.registro-right {
+  width: 50%;
+  height: 100vh;                 /* Ocupa toda la altura de la pantalla */
+  display: flex;
+  justify-content: center;       /* Centra horizontalmente el formulario */
+  align-items: center;           /* Centra verticalmente el formulario */
+  background-color: #fff;
+  padding-right: 4rem; /* Aumenta este valor si quieres más espacio a la derecha */
+  box-sizing: border-box;
+  overflow: hidden;              /* Previene que aparezca scroll */
+}
+
+/* Caja del formulario */
+.registro-box {
+  width: 100%;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: 10.5rem; /* <-- Agrega espacio a la derecha */
+}
+
+.registro-box h2 {
+  margin-bottom: 0.5rem;
+  font-size: 28px;
+}
+
+.registro-box p {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #2196F3;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px; /* Ajusta el espacio superior */
+}
+
+.submit-button:hover {
+  background-color: #2196F3;
+}

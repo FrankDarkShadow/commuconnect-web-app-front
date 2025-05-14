@@ -1,0 +1,93 @@
+<div class="login-page">
+  <header class="main-header">
+    <div class="logo-container">
+      <img src="assets/logo_monkey_fit.png" alt="img-foto" />
+    </div>
+    <button class="primary-button">Ir a Página Principal</button>
+  </header>
+
+  <main class="login-main">
+    <div class="login-left">
+      <img src="assets/adolescentes-activas-haciendo-deporte.jpg" alt="img-foto" />
+    </div>
+
+    <div class="registro-right">
+      <div class="registro-box">
+        <h2>¡Crea tu cuenta!</h2>
+        <p>Empieza tu viaje hacia una vida activa y conectada.</p>
+
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Nombres:</label>
+            <input formControlName="nombres" type="text" />
+          </div>
+
+          <div class="form-group">
+            <label>Apellidos:</label>
+            <input formControlName="apellidos" type="text" />
+          </div>
+
+          <div class="form-group">
+            <label>Correo Electrónico:</label>
+            <input formControlName="correo" type="email" />
+          </div>
+
+          <div class="form-group">
+            <label>Contraseña:</label>
+            <input formControlName="contrasena" type="password" />
+          </div>
+
+          <div class="form-group">
+            <label>Repite Contraseña:</label>
+            <input formControlName="repetirContrasena" type="password" />
+          </div>
+
+          <div class="form-group">
+            <label>Fecha de nacimiento:</label>
+            <input formControlName="fechaNacimiento" type="date" />
+          </div>
+
+          <div class="form-group">
+            <label>Departamento:</label>
+            <select formControlName="departamento">
+              <option value="">Selecciona</option>
+              <option value="Lima">Lima</option>
+              <!-- más opciones -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Ciudad:</label>
+            <select formControlName="ciudad">
+              <option value="">Selecciona</option>
+              <option value="Miraflores">Miraflores</option>
+              <!-- más opciones -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Dirección domiciliaria:</label>
+            <input formControlName="direccion" type="text" />
+          </div>
+
+          <div class="form-group">
+            <label>Número de Teléfono:</label>
+            <input formControlName="telefono" type="tel" />
+          </div>
+
+          <div class="form-group">
+            <label>Género:</label>
+            <select formControlName="genero">
+              <option value="">Selecciona</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Masculino">Masculino</option>
+            </select>
+          </div>
+
+          <button class="submit-button" type="submit">Siguiente</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+    

@@ -21,10 +21,10 @@
 
 .primary-button {
   padding: 10px 20px;
-  background-color: #0e76a8;
-  color: white;
+  background-color: #007bff;
   border: none;
-  border-radius: 4px;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
 }
 
