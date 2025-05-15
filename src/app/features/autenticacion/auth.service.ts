@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'; // Cliente HTTP de Angular
+import { Observable } from 'rxjs'; // Para manejar respuestas asincrónicas
+import { environment } from 'src/environments/environment'; // Para obtener la URL base del backend
 
-import { Observable } from 'rxjs';
-
-import { environment } from 'src/environments/environment';
 
 
 
@@ -18,7 +17,20 @@ interface LoginResponse {
   token_type: string;
 }
 
-
+interface RegisterRequest {
+  nombres: string;
+  apellidos: string;
+  email: string;
+  password: string;
+  fechaNacimiento: string;
+  departamento: string;
+  ciudad: string;
+  direccion: string;
+  telefono: string;
+  genero: string;
+  peso: string;
+  talla: string;
+}
 
 
 
@@ -40,5 +52,11 @@ export class AuthService {
     };
 
       return this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, body);
-  }
+    }
+    // Método para registrar un nuevo usuario
+    register(data: RegisterRequest): Observable<any> {
+    // Hacemos una petición POST a la URL: https://tu-api.com/usuarios/register
+    return this.http.post<any>(`${this.baseUrl}/auth/register`, data);
+    }
+  
 }

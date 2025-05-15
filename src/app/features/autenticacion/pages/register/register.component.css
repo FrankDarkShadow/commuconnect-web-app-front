@@ -1,123 +1,160 @@
-/* Estructura general */
 .login-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden; /* nada de scroll en la página */
 }
 
-/* Header */
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   background-color: #f5f5f5;
+  height: 50px;
+  flex-shrink: 0;
 }
 
 .logo-container img {
-  height: 50px;                /* Ajusta la altura de la imagen */
-  position: fixed;             /* La imagen se mantiene fija */
-  top: 10px;                   /* Posición desde el borde superior de la ventana */
-  left: 10px;                  /* Posición desde el borde izquierdo de la ventana */
-  z-index: 1000;               /* Asegura que la imagen esté por encima de otros elementos */
+  height: 40px;
+  position: fixed;
+  top: 5px;
+  left: 10px;
+  z-index: 1000;
 }
 
 .primary-button {
-  padding: 10px 20px;
+  padding: 6px 12px;
+  font-size: 14px;
   background-color: #007bff;
   border: none;
   color: white;
   border-radius: 5px;
   cursor: pointer;
 }
--------------------------------
-/* Cuerpo principal */
+
 .login-main {
   display: flex;
-  flex: 1;
-  background-color: #ffffff;
+  height: calc(100vh - 50px);
+  overflow: hidden;
 }
-.login-left{
-  width: 50%;                /* El contenedor ocupará el 50% del ancho de la pantalla */
-  height: 90vh;             /* El contenedor tendrá la altura igual a la altura de la ventana */
-  position: fixed;           /* Asegura que el contenedor no se desplace al hacer scroll */
-  bottom: 0;                    /* La imagen se alinea en la parte (inferior )superior */
-  left: 0;                   /* La imagen se alinea a la izquierda */
+
+.login-left {
+  width: 50%;
+  height: 100%;
+  position: fixed;
+  top: 50px;
+  left: 0;
 }
-.registro-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .login-left img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
----------------- otra mitad
+
 .registro-right {
   width: 50%;
-  height: 100vh;                 /* Ocupa toda la altura de la pantalla */
-  display: flex;
-  justify-content: center;       /* Centra horizontalmente el formulario */
-  align-items: center;           /* Centra verticalmente el formulario */
+  margin-left: 50%;
   background-color: #fff;
-  padding-right: 4rem; /* Aumenta este valor si quieres más espacio a la derecha */
-  box-sizing: border-box;
-  overflow: hidden;              /* Previene que aparezca scroll */
+
+  overflow: hidden;
+
+  padding: 0.5rem 1rem;
+
+  display: flex;
+  justify-content: center;
+
+  /* Escalamos el contenido */
+  transform: scale(0.85);
+  transform-origin: top left;
+
+  /* Reducimos la altura proporcionalmente al escalado para que no se corte */
+  height: calc((100vh - 50px) / 0.85);
 }
 
-/* Caja del formulario */
+
 .registro-box {
   width: 100%;
-  max-width: 360px;
-  margin-left: auto;
-  margin-right: 10.5rem; /* <-- Agrega espacio a la derecha */
+  max-width: 340px;
+  font-size: 13px;
 }
 
 .registro-box h2 {
+  font-size: 22px;
   margin-bottom: 0.5rem;
-  font-size: 28px;
+  text-align: center;
 }
 
 .registro-box p {
-  margin-bottom: 1.5rem;
-  color: #555;
-}
-
-.form-group {
+  font-size: 14px;
   margin-bottom: 1rem;
+  color: #555;
+  text-align: center;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 0.3rem;
   font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 0.2rem;
+  display: block;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 0.6rem;
+  height: 28px;
+  font-size: 12px;
+  padding: 3px 6px;
+  box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.form-row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 80px;
 }
 
 .submit-button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 8px;
+  font-size: 14px;
   background-color: #2196F3;
   border: none;
   color: white;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
-  margin-top: 20px; /* Ajusta el espacio superior */
+  margin-top: 6px;
 }
 
 .submit-button:hover {
-  background-color: #2196F3;
+  background-color: #1976d2;
+}
+
+.terms-text {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #555;
+  text-align: center;
+}
+
+.terms-text a {
+  color: #000;
+  text-decoration: none;
+}
+
+.subrayado {
+  text-decoration: underline;
+  font-weight: 500;
 }

@@ -43,27 +43,26 @@
           </div>
 
           <div class="form-group">
-            <label>Fecha de nacimiento:</label>
-            <input formControlName="fechaNacimiento" type="date" />
-          </div>
+          <label>Fecha de nacimiento:</label>
+          <input formControlName="fechaNacimiento" type="date" />
+        </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Departamento:</label>
+          <select formControlName="departamento">
+            <option value="">Selecciona</option>
+            <option value="Lima">Lima</option>
+          </select>
+        </div>
 
-          <div class="form-group">
-            <label>Departamento:</label>
-            <select formControlName="departamento">
-              <option value="">Selecciona</option>
-              <option value="Lima">Lima</option>
-              <!-- más opciones -->
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Ciudad:</label>
-            <select formControlName="ciudad">
-              <option value="">Selecciona</option>
-              <option value="Miraflores">Miraflores</option>
-              <!-- más opciones -->
-            </select>
-          </div>
+        <div class="form-group">
+          <label>Ciudad:</label>
+          <select formControlName="ciudad">
+            <option value="">Selecciona</option>
+            <option value="Miraflores">Miraflores</option>
+          </select>
+        </div>
+      </div>
 
           <div class="form-group">
             <label>Dirección domiciliaria:</label>
@@ -74,7 +73,7 @@
             <label>Número de Teléfono:</label>
             <input formControlName="telefono" type="tel" />
           </div>
-
+        <div class="form-row">
           <div class="form-group">
             <label>Género:</label>
             <select formControlName="genero">
@@ -83,8 +82,22 @@
               <option value="Masculino">Masculino</option>
             </select>
           </div>
-
+          <div class="form-group">
+            <label>Peso (kg):</label>
+            <input formControlName="peso" type="number" step="0.01" />
+          </div>
+          <div class="form-group">
+            <label>Talla:</label>
+            <input formControlName="talla" type="text" />
+          </div>
+        </div>
           <button class="submit-button" type="submit">Siguiente</button>
+          <p>
+            Al registrarse, aceptas los 
+            <a href="/terminos" target="_blank" class="subrayado">Términos del servicio</a> 
+            y la 
+            <a href="/política" target="_blank" class="subrayado">Política de privacidad</a>.
+          </p>
         </form>
       </div>
     </div>
