@@ -6,16 +6,11 @@ const routes: Routes = [{ path: 'user', loadChildren: () => import('./features/u
   { path: 'autenticacion', loadChildren: () => import('./features/autenticacion/autenticacion.module').then(m => m.AutenticacionModule) },
   { path: 'pago', loadChildren: () => import('./features/pago/pago.module').then(m => m.PagoModule) },
   { path: 'presentacion', loadChildren: () => import('./features/presentacion/presentacion.module').then(m => m.PresentacionModule) },
-  { path: '', redirectTo: '/presentacion', pathMatch: 'full' },
 
+ // { path: '', redirectTo: '/presentacion', pathMatch: 'full' },
 
-
-  // Define tus rutas aquí
-
-
-
-
-
+ { path: '', redirectTo: '/admin', pathMatch: 'full' },
+ { path: '**', redirectTo: 'admin' }
 
 
 ];

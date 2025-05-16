@@ -5,16 +5,23 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 
 
-import { LayoutModule } from '../../layout/layout.module';
+import { RegistroComunidadComponent } from './pages/registro-comunidad/registro-comunidad.component';
+import { AdminLayoutModule } from 'src/app/layout/admin-layout/admin-layout.module';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AdminComponent
+    AdminComponent,
+    RegistroComunidadComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    LayoutModule
+    AdminLayoutModule,
+    FormsModule
+
+
   ]
 })
 export class AdminModule { }

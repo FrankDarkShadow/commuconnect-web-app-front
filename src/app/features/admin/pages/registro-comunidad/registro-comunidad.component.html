@@ -1,0 +1,82 @@
+<div class="container mt-4">
+  <div class="row g-3">
+    <!-- Columna izquierda: Formulario -->
+    <div class="col-md-6">
+      <h5 class="text-black fw-bold mb-4" style="font-size: 24px;">
+  Crear comunidad
+</h5>
+
+      <form (ngSubmit)="crearComunidad()" #formComunidad="ngForm">
+        <!-- Nombre -->
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre de la comunidad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            name="nombre"
+            [(ngModel)]="comunidad.nombre"
+            required
+          />
+        </div>
+
+        <!-- Slogan -->
+        <div class="mb-3">
+          <label for="slogan" class="form-label">Slogan de la comunidad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="slogan"
+            name="slogan"
+            [(ngModel)]="comunidad.slogan"
+          />
+        </div>
+
+
+
+        <!-- Logo -->
+        <div class="mb-3">
+          <label for="logo" class="form-label">Añade un logo:</label>
+
+          <input
+            class="form-control"
+            type="file"
+            id="logo"
+            (change)="onFileSelected($event)"
+            accept="image/png, image/jpeg"
+          />
+<p></p>
+          <p>Dimensiones máximas: 500x500 px.</p>
+          <p>Dimensiones mínimas: 100x100 px.</p>
+
+          <p>Peso máximo: 1 MB (opcional, pero útil).</p>
+
+
+        </div>
+
+        <!-- Botón borrar logo -->
+        <div class="mb-3" *ngIf="imagenURL">
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="borrarLogo()">
+            Borrar logo
+          </button>
+        </div>
+
+        <!-- Botón final -->
+        <button type="submit" class="btn btn-primary">Añadir comunidad</button>
+      </form>
+    </div>
+
+    <!-- Columna derecha: Vista previa -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div *ngIf="imagenURL; else noPreview">
+        <img [src]="imagenURL" class="img-fluid rounded border" alt="Vista previa del logo" />
+      </div>
+      <ng-template #noPreview>
+         <div class="d-flex justify-content-center align-items-center" style="height: 200px; border: 1px dashed #ccc; border-radius: 8px; width: 100%;">
+      <i class="bi bi-image" style="font-size: 4rem; color: #ccc;"></i>
+    </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+

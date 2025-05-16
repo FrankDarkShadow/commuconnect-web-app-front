@@ -1,0 +1,110 @@
+viejo
+
+
+
+
+.main-container {
+  display: flex;
+  height: calc(100vh - 60px); /* 60px asumo que es la altura de tu header */
+  /* Si tu header tiene otra altura ajusta aquí */
+}
+
+
+.content {
+  flex-grow: 1; /* toma todo el espacio restante */
+  overflow-y: auto; /* scroll si el contenido es muy largo */
+  padding: 20px; /* espacio interno */
+}
+
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .content {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Que el body y html llenen toda la pantalla */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Sidebar: altura completa y scroll si hace falta */
+
+
+
+
+
+
+
+
+.sidebar {
+  height: calc(100vh - 60px);
+  overflow-y: auto; /* mejor que scroll para que sólo aparezca si hace falta */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.sidebar::-webkit-scrollbar {
+  display: none; /* Safari y Chrome */
+}
+
+.content-area {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Opcional: si usas un header fijo, considera dar margin-top al container */
+app-header {
+  height: 55px; /* ajustar al tamaño real del header */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+
+
+
+
+
+/* Ajustar container-fluid para que no quede debajo del header */
+.container-fluid {
+  padding-top: 60px; /* igual que el alto del header */
+}
+
+
+
+
+
+
+
