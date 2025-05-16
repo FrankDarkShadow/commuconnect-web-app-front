@@ -19,47 +19,75 @@
         <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label>Nombres:</label>
-            <input formControlName="nombres" type="text" />
+            <input formControlName="nombre" type="text" />
           </div>
 
           <div class="form-group">
             <label>Apellidos:</label>
-            <input formControlName="apellidos" type="text" />
+            <input formControlName="apellido" type="text" />
           </div>
 
           <div class="form-group">
             <label>Correo Electrónico:</label>
-            <input formControlName="correo" type="email" />
+            <input formControlName="email" type="email" />
+          </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tipo de Documento:</label>
+            <select formControlName="tipo_documento">
+              <option value="">Seleccione</option>
+              <option value="DNI">DNI</option>
+              <option value="CARNET DE EXTRANJERÍA">Carnet de Extranjería</option>
+            </select>
           </div>
 
+          <div class="form-group">
+            <label>Número de Documento:</label>
+            <input formControlName="num_doc" type="text" />
+          </div>
+        </div>
           <div class="form-group">
             <label>Contraseña:</label>
-            <input formControlName="contrasena" type="password" />
+            <input formControlName="password" type="password" />
           </div>
-
+        
           <div class="form-group">
             <label>Repite Contraseña:</label>
-            <input formControlName="repetirContrasena" type="password" />
+            <input formControlName="repetir_password" type="password" />
           </div>
 
           <div class="form-group">
           <label>Fecha de nacimiento:</label>
-          <input formControlName="fechaNacimiento" type="date" />
+          <input formControlName="fecha_nac" type="date" />
         </div>
       <div class="form-row">
         <div class="form-group">
           <label>Departamento:</label>
-          <select formControlName="departamento">
+          <select formControlName="id_departamento">
             <option value="">Selecciona</option>
-            <option value="Lima">Lima</option>
+            <option value="1">Amazonas</option>
+            <option value="2">Áncash</option>
+            <option value="3">Apurímac</option>
+            <option value="4">Arequipa</option>
+            <option value="5">Ayacucho</option>
+            <option value="6">Cajamarca</option>
+            <option value="7">Callao</option>
+            <option value="8">Cusco</option>
+            <option value="9">Huancavelica</option>
+            <option value="10">Huánuco</option>
+            <option value="11">Ica</option>
+            <option value="12">Junín</option>
+            <option value="13">La Libertad</option>
+            <option value="14">Lambayeque</option>
+            <option value="15">Lima</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label>Ciudad:</label>
-          <select formControlName="ciudad">
+          <label>Distrito:</label>
+          <select formControlName="id_distrito">
             <option value="">Selecciona</option>
-            <option value="Miraflores">Miraflores</option>
+            <option value="1">ate</option>
           </select>
         </div>
       </div>
@@ -71,7 +99,7 @@
 
           <div class="form-group">
             <label>Número de Teléfono:</label>
-            <input formControlName="telefono" type="tel" />
+            <input formControlName="numero_telefono" type="tel" />
           </div>
         <div class="form-row">
           <div class="form-group">
@@ -88,7 +116,8 @@
           </div>
           <div class="form-group">
             <label>Talla:</label>
-            <input formControlName="talla" type="text" />
+            <input formControlName="talla" type="number" step="0.01" />
+
           </div>
         </div>
           <button class="submit-button" type="submit">Siguiente</button>
@@ -103,4 +132,3 @@
     </div>
   </main>
 </div>
-    

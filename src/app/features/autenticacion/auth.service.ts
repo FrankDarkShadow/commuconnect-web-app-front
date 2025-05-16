@@ -18,18 +18,21 @@ interface LoginResponse {
 }
 
 interface RegisterRequest {
-  nombres: string;
-  apellidos: string;
+  nombre: string;
+  apellido: string;
   email: string;
   password: string;
-  fechaNacimiento: string;
-  departamento: string;
-  ciudad: string;
+  repetir_password: string;
+  tipo_documento: 'DNI' | 'CARNET DE EXTRANJERÍA'; // Debe coincidir con Literal
+  num_doc: string;
+  numero_telefono: string;
+  id_departamento: number;
+  id_distrito: number;
   direccion: string;
-  telefono: string;
+  fecha_nac: string; 
   genero: string;
-  peso: string;
-  talla: string;
+  talla: number;
+  peso: number;
 }
 
 @Injectable({
@@ -64,6 +67,6 @@ export class AuthService {
     // Método para registrar un nuevo usuario
     register(data: RegisterRequest): Observable<any> {
     // Hacemos una petición POST a la URL: https://tu-api.com/usuarios/register
-    return this.http.post<any>(`${this.baseUrl}/api/auth/register`, data);
+    return this.http.post<any>(`${this.baseUrl}/usuarios/registrar-cliente`, data);
     }
   }
