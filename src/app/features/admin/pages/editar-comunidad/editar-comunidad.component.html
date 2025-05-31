@@ -3,13 +3,17 @@
     <!-- Columna izquierda: Formulario -->
     <div class="col-md-6">
       <h5 class="text-black fw-bold mb-4" style="font-size: 24px;">
-  Crear comunidad
+  Editar comunidad
 </h5>
 
-      <form (ngSubmit)="crearComunidad()" #formComunidad="ngForm">
+
+
+
+
+      <form (ngSubmit)="editarComunidad()" #formComunidad="ngForm">
         <!-- Nombre -->
         <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre de la comunidad <span class="text-danger">*</span></label>
+          <label for="nombre" class="form-label">Nombre de la comunidad</label>
           <input
             type="text"
             class="form-control"
@@ -17,16 +21,7 @@
             name="nombre"
             [(ngModel)]="comunidad.nombre"
             required
-            #nombre="ngModel"
-            [ngClass]="{ 'is-invalid': nombre.invalid && nombre.touched }"
-
           />
-          <div *ngIf="nombre.invalid && nombre.touched" class="invalid-feedback">
-            Este campo es obligatorio.
-          </div>
-
-
-
         </div>
 
         <!-- Slogan -->
@@ -45,7 +40,7 @@
 
         <!-- Logo -->
         <div class="mb-3">
-          <label for="logo" class="form-label">Añade un logo:</label>
+          <label for="logo" class="form-label">Edite el logo:</label>
 
           <input
             class="form-control"
@@ -55,9 +50,10 @@
             accept="image/png, image/jpeg"
           />
 <p></p>
-           <p class="form-text">
-            Dimensiones mín: 100x100px, máx: 500x500px. Tamaño máx: 1 MB.
-          </p>
+          <p>Dimensiones máximas: 500x500 px.</p>
+          <p>Dimensiones mínimas: 100x100 px.</p>
+
+          <p>Peso máximo: 1 MB (opcional, pero útil).</p>
 
 
         </div>
@@ -70,7 +66,7 @@
         </div>
 
         <!-- Botón final -->
-        <button type="submit" class="btn btn-primary" [disabled]="formComunidad.invalid">Añadir comunidad</button>
+        <button type="submit" class="btn btn-primary">Guardar comunidad</button>
 
         <button type="button" class="btn btn-secondary ms-2" [routerLink]="['/admin/lista-comunidad']">
           Cancelar
@@ -91,4 +87,5 @@
     </div>
   </div>
 </div>
+
 

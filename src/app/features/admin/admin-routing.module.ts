@@ -6,6 +6,11 @@ import { AdminLayoutComponent } from '../../layout/admin-layout/admin/admin-layo
 
 
 import { RegistroComunidadComponent } from './pages/registro-comunidad/registro-comunidad.component';
+import { ListaComunidadComponent } from './pages/lista-comunidad/lista-comunidad.component';
+import { EditarComunidadComponent } from './pages/editar-comunidad/editar-comunidad.component';
+
+
+
 const routes: Routes = [
 
  // { path: '', component: AdminComponent },
@@ -17,8 +22,12 @@ const routes: Routes = [
     path: '',
     component: AdminLayoutComponent,
     children: [
-      { path: '', redirectTo: 'registro-comunidad', pathMatch: 'full' },
-      { path: 'registro-comunidad', component: RegistroComunidadComponent }
+      { path: '', redirectTo: 'lista-comunidad', pathMatch: 'full' },
+      { path: 'lista-comunidad', component: ListaComunidadComponent },
+      { path: 'registro-comunidad', component: RegistroComunidadComponent },
+      { path: 'editar-comunidad', component: EditarComunidadComponent },
+
+
       // otras rutas como dashboard, usuarios, etc.
     ]
   }
