@@ -17,7 +17,7 @@ import { UserLayoutModule } from "./layout/user-layout/user-layout.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, // ✅ Importación agregada
+    FormsModule, 
     HttpClientModule,
     ReactiveFormsModule,
     LayoutModule,

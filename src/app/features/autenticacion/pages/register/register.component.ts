@@ -59,11 +59,39 @@ this.registroForm = this.fb.group({
 
   // Método que se ejecuta al enviar el formulario
     onSubmit() {
+
+//debugger;
+
+
+Object.keys(this.registroForm.controls).forEach(key => {
+  const control = this.registroForm.get(key);
+  if (control?.invalid) {
+    console.log(`Campo inválido: ${key}`, control.errors);
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+ if (this.registroForm.invalid) {
+    this.registroForm.markAllAsTouched(); // 👈 Marca todos los campos como tocados
+    this.errorMessage = 'Por favor, completa todos los campos requeridos.';
+    return;
+  }
+/*
     if (this.registroForm.invalid) {
       this.errorMessage = 'Por favor, completa todos los campos requeridos.';
       return;
     }
-
+*/
     const formValues = this.registroForm.value;
 
     // Validar que las contraseñas coincidan
@@ -110,19 +138,32 @@ this.registroForm = this.fb.group({
       return;
     }
 
-    // Validar peso coherente (30 kg a 300 kg)
+    /*
     const peso = parseFloat(formValues.peso);
     if (isNaN(peso) || peso < 30 || peso > 300) {
       this.errorMessage = 'Ingresa un peso válido entre 30 y 300 kg.';
       return;
     }
 
-    // Validar talla coherente (0.5 m a 2.5 m)
+
     const talla = parseFloat(formValues.talla);
-    if (isNaN(talla) || talla < 0.5 || talla > 2.5) {
+    if (isNaN(talla) || talla > 2.5 || talla < 0.5) {
       this.errorMessage = 'Ingresa una talla válida entre 0.5 y 2.5 metros.';
       return;
     }
+*/
+
+const peso = parseInt(formValues.peso, 10);
+if (isNaN(peso) || peso < 30 || peso > 300) {
+  this.errorMessage = 'Ingresa un peso válido entre 30 y 300 kg.';
+  return;
+}
+
+const talla = parseInt(formValues.talla, 10);
+if (isNaN(talla) || talla < 50 || talla > 250) { // Si la talla es cm, ajusta el rango
+  this.errorMessage = 'Ingresa una talla válida entre 50 y 250 cm.';
+  return;
+}
 
     // Si pasa todas las validaciones, se construye el requestBody y se envía
     const requestBody = {
@@ -132,7 +173,7 @@ this.registroForm = this.fb.group({
       tipo_documento: formValues.tipo_documento,
       num_doc: formValues.num_doc,
       password: formValues.password,
-      repetir_password: formValues.repetir_password,
+    //  repetir_password: formValues.repetir_password,
       fecha_nac: formValues.fecha_nac,
       id_departamento: parseInt(formValues.id_departamento),
       id_distrito: parseInt(formValues.id_distrito),

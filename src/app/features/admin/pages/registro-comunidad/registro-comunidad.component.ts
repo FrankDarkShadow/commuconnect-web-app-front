@@ -114,7 +114,7 @@ comunidad = {
     this.comunidadService.crearComunidad(this.comunidad, this.archivoLogo).subscribe({
       next: (res) => {
         console.log('Comunidad creada', res);
-        this.router.navigate(['/comunidades']);
+        this.router.navigate(['/admin/lista-comunidad']);
       },
       error: (err) => {
         console.error('Error al crear comunidad', err);

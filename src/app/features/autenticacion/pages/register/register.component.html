@@ -37,7 +37,7 @@
             <select formControlName="tipo_documento">
               <option value="">Seleccione</option>
               <option value="DNI">DNI</option>
-              <option value="CARNET DE EXTRANJERÍA">Carnet de Extranjería</option>
+              <option value="CE">CE</option>
             </select>
           </div>
 
@@ -71,15 +71,14 @@
             <option value="4">Arequipa</option>
             <option value="5">Ayacucho</option>
             <option value="6">Cajamarca</option>
-            <option value="7">Callao</option>
-            <option value="8">Cusco</option>
-            <option value="9">Huancavelica</option>
-            <option value="10">Huánuco</option>
-            <option value="11">Ica</option>
-            <option value="12">Junín</option>
-            <option value="13">La Libertad</option>
-            <option value="14">Lambayeque</option>
-            <option value="15">Lima</option>
+            <option value="7">Cusco</option>
+            <option value="8">Huancavelica</option>
+            <option value="9">Huánuco</option>
+            <option value="10">Ica</option>
+            <option value="11">Junín</option>
+            <option value="12">La Libertad</option>
+            <option value="13">Lambayeque</option>
+            <option value="14">Lima</option>
           </select>
         </div>
 
@@ -87,7 +86,9 @@
           <label>Distrito:</label>
           <select formControlName="id_distrito">
             <option value="">Selecciona</option>
-            <option value="1">ate</option>
+            <option value="1">Ancón</option>
+            <option value="2">Ate</option>
+            <option value="3">Barranco</option>
           </select>
         </div>
       </div>
@@ -123,7 +124,6 @@
 
         <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
         <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
-
           <button class="submit-button" type="submit">Siguiente</button>
           <p>
             Al registrarse, aceptas los

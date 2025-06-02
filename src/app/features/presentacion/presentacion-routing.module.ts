@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'nosotros',component: NosotrosComponent},
   { path: 'comunidades',component: ComunidadesComponent},
   { path: 'confirmar-correo', component: ConfirmarCorreoComponent },
-  { path: 'correo-confirmado', component: CorreoConfirmadoComponent }
+  { path: 'correo-confirmado/:token', component: CorreoConfirmadoComponent }
 
 ];
 
