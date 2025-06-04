@@ -10,6 +10,7 @@ import { LayoutModule } from '../../layout/layout.module';
 import { SeleccionComunidadComponent } from './seleccion-comunidad/seleccion-comunidad.component';
 import { MisComunidadesComponent } from './mis-comunidades/mis-comunidades.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { ReservasDisponiblesComponent } from './pages/reservas-disponibles/reservas-disponibles.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     UserComponent,
     SeleccionComunidadComponent,
     MisComunidadesComponent,
-    HomepageComponent
+    HomepageComponent,
+    ReservasDisponiblesComponent
   ],
   imports: [
     CommonModule,

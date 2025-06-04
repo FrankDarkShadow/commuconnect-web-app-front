@@ -1,0 +1,239 @@
+/* src/app/features/user/pages/reservas-disponibles/reservas-disponibles.component.css */
+
+/* Contenedor principal: añade un margen alrededor */
+.container-padre {
+  margin: 20px;
+}
+
+/* Header con flecha y título */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Botón de retroceso */
+.btn-back {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Indicador de paso y título */
+.titulo-header {
+  display: flex;
+  align-items: center;
+}
+
+.badge-step {
+  background-color: #28a745; /* verde */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* Contenedor de cada paso */
+.step-container {
+  margin-top: 20px;
+}
+
+/* Tarjetas de distrito / local (Paso 1 y Paso 2) */
+.card-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  flex: 1;
+  background-color: #e9f7ef;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.card label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+
+/* Filtro de fecha */
+.filtro-fecha {
+  background-color: #e9f7ef;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.label-fecha {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.input-date {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Botones de fechas disponibles */
+.fechas-disponibles button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: 1px solid #28a745;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.fechas-disponibles button.selected {
+  background: #28a745;
+  color: white;
+}
+
+/* Mensajes de carga o sin resultados */
+.text-muted {
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+.text-danger {
+  color: #dc3545;
+  margin-bottom: 10px;
+}
+
+/* Botón “Continuar” */
+.footer-step {
+  margin-top: 20px;
+}
+
+.btn-continuar {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-continuar[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Horas disponibles (Paso 2) */
+.horas-disponibles button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: 1px solid #28a745;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.horas-disponibles button.selected {
+  background: #28a745;
+  color: white;
+}
+
+/* Contenedor de varias mini-tarjetas (Paso 3) */
+.multiple-card-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.mini-card {
+  flex: 1;
+  background-color: #e9f7ef;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.mini-card label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.mini-card input {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+
+/* Tabla de sesiones (Paso 3) */
+.tabla-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.tabla-sesiones {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-sesiones th,
+.tabla-sesiones td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Footer de la tabla con paginación y botón “RESERVAR” */
+.sesiones-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paginacion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-prev,
+.btn-next {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: not-allowed; /* placeholder */
+}
+
+.current-page {
+  font-weight: bold;
+}
+
+/* Botón RESERVAR */
+.btn-reservar {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-reservar[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

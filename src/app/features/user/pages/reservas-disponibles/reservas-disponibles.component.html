@@ -1,0 +1,217 @@
+<div class="container-padre">
+  <!-- =========== HEADER =========== -->
+  <div class="header">
+    <!-- Flecha para retroceder (Paso actual > 1) -->
+    <button class="btn-back" (click)="retroceder()" [disabled]="step === 1">&#x2039;</button>
+
+    <!-- Indicador de paso y título -->
+    <div class="titulo-header">
+      <span class="badge-step">Paso {{ step }} de 3</span>
+      <h2>Sesiones Disponibles</h2>
+    </div>
+  </div>
+  <hr />
+
+  <!-- ==================== PASO 1: Selección de Servicio y Local ==================== -->
+  <div *ngIf="step === 1" class="step-container">
+    <!-- Selección de Servicio -->
+    <div class="card-row">
+      <div class="card">
+        <label>Servicio:</label>
+        <select [(ngModel)]="idServicioElegido" (change)="cargarFechas()">
+          <option *ngFor="let servicio of serviciosDisponibles" [value]="servicio.id">
+            {{ servicio.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Selección de Local -->
+      <div class="card">
+        <label>Local:</label>
+        <select [(ngModel)]="idLocalElegido" (change)="cargarFechas()">
+          <option *ngFor="let local of localesDisponibles" [value]="local.id">
+            {{ local.nombre }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Selector de fecha -->
+    <div class="filtro-fecha">
+      <label class="label-fecha">Fecha Inicio</label>
+      <input type="date" class="input-date" [(ngModel)]="fechaSeleccionada" (change)="elegirFecha(fechaSeleccionada)" />
+    </div>
+
+    <!-- Mensaje Cargando -->
+    <div *ngIf="cargandoFechas" class="text-muted">
+      Cargando fechas…
+    </div>
+
+    <!-- Mensaje Sin Fechas -->
+    <div *ngIf="!cargandoFechas && sinFechas" class="text-danger">
+      No hay fechas disponibles para estos filtros.
+    </div>
+
+    <!-- Botones con las fechas devueltas -->
+    <div *ngIf="!cargandoFechas && !sinFechas" class="fechas-disponibles">
+      <button
+        *ngFor="let f of availableDates"
+        (click)="elegirFecha(f)"
+        [class.selected]="f === fechaSeleccionada"
+      >
+        {{ f }}
+      </button>
+    </div>
+
+    <!-- Botón Continuar -->
+    <div class="footer-step">
+      <button
+        class="btn-continuar"
+        [disabled]="!fechaSeleccionada"
+        (click)="continuar()"
+      >
+        Continuar
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== PASO 2: Hora ==================== -->
+  <div *ngIf="step === 2" class="step-container">
+    <!-- Tarjetas de Distrito / Local / Fecha elegida -->
+    <div class="card-row">
+      <div class="card">
+        <label>Distrito:</label>
+        <input type="text" [value]="'San Miguel'" readonly />
+      </div>
+      <div class="card">
+        <label>Local:</label>
+        <input type="text" [value]="'La Tiendita'" readonly />
+      </div>
+    </div>
+
+    <div class="card-row">
+      <div class="card">
+        <label>Fecha Inicio</label>
+        <input type="text" [value]="fechaSeleccionada" readonly />
+      </div>
+    </div>
+
+    <!-- Mensaje Cargando Horas -->
+    <div *ngIf="cargandoHoras" class="text-muted">
+      Cargando horas disponibles…
+    </div>
+
+    <!-- Mensaje Sin Horas -->
+    <div *ngIf="!cargandoHoras && sinHoras" class="text-danger">
+      No hay horas disponibles para esta fecha.
+    </div>
+
+    <!-- Botones con las horas devueltas -->
+    <div *ngIf="!cargandoHoras && !sinHoras" class="horas-disponibles">
+      <button
+        *ngFor="let h of availableHours"
+        (click)="elegirHora(h)"
+        [class.selected]="h === horaSeleccionada"
+      >
+        {{ h }}
+      </button>
+    </div>
+
+    <!-- Botón Continuar -->
+    <div class="footer-step">
+      <button
+        class="btn-continuar"
+        [disabled]="!horaSeleccionada"
+        (click)="continuar()"
+      >
+        Continuar
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== PASO 3: Tabla de Sesiones ==================== -->
+  <div *ngIf="step === 3" class="step-container sesiones-container">
+    <!-- Tarjetas de Distrito / Local / Fecha / Hora elegida -->
+    <div class="multiple-card-row">
+      <div class="mini-card">
+        <label>Distrito elegido:</label>
+        <input type="text" [value]="'San Miguel'" readonly />
+      </div>
+      <div class="mini-card">
+        <label>Local elegido:</label>
+        <input type="text" [value]="'La Tiendita'" readonly />
+      </div>
+      <div class="mini-card">
+        <label>Fecha elegida:</label>
+        <input type="text" [value]="fechaSeleccionada" readonly />
+      </div>
+      <div class="mini-card">
+        <label>Hora elegida:</label>
+        <input type="text" [value]="horaSeleccionada" readonly />
+      </div>
+    </div>
+
+    <!-- Mensaje Cargando Sesiones -->
+    <div *ngIf="cargandoSesiones" class="text-muted">
+      Cargando sesiones disponibles…
+    </div>
+
+    <!-- Mensaje Sin Sesiones -->
+    <div *ngIf="!cargandoSesiones && sinSesiones" class="text-danger">
+      No hay sesiones disponibles para esta fecha y hora.
+    </div>
+
+    <!-- Tabla con las sesiones devueltas -->
+    <div *ngIf="!cargandoSesiones && !sinSesiones" class="tabla-wrapper">
+      <table class="tabla-sesiones">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Ubicación</th>
+            <th>Responsable</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Vacantes totales</th>
+            <th>Vacantes libres</th>
+            <th>Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of sesionesDisponibles; let i = index">
+            <td>{{ s.fecha }}</td>
+            <td>{{ s.ubicacion }}</td>
+            <td>{{ s.responsable }}</td>
+            <td>{{ s.hora_inicio }}</td>
+            <td>{{ s.hora_fin }}</td>
+            <td>{{ s.vacantes_totales }}</td>
+            <td>{{ s.vacantes_libres }}</td>
+            <td>
+              <input
+                type="radio"
+                name="radioSesion"
+                [checked]="sesionSeleccionadaIndex === i"
+                (change)="seleccionarSesion(i)"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer con paginación (placeholder) y botón “RESERVAR” -->
+    <div class="footer-step sesiones-footer">
+      <div class="paginacion">
+        <button class="btn-prev" disabled>Previous</button>
+        <span class="current-page">1</span>
+        <button class="btn-next" disabled>Next</button>
+      </div>
+      <button
+        class="btn-reservar"
+        [disabled]="sesionSeleccionadaIndex === null"
+        (click)="reservar()"
+      >
+        RESERVAR
+      </button>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,8 @@ import { MisComunidadesComponent } from './mis-comunidades/mis-comunidades.compo
 //const routes: Routes = [{ path: '', component: UserComponent }];
 import { HomepageComponent } from './homepage/homepage.component'; // importa el componente
 
+import { ReservasDisponiblesComponent } from './pages/reservas-disponibles/reservas-disponibles.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +21,8 @@ const routes: Routes = [
       { path: 'seleccion-comunidad', component: SeleccionComunidadComponent },
       // otras rutas hijas futuras pueden ir aquí
       { path: 'mis-comunidades', component: MisComunidadesComponent }, // ✅ Nueva ruta
-      { path: '', redirectTo: 'mis-comunidades', pathMatch: 'full' }
+      { path: '', redirectTo: 'mis-comunidades', pathMatch: 'full' },
+      { path: 'reservas', component: ReservasDisponiblesComponent }
     ]
   }
 ];

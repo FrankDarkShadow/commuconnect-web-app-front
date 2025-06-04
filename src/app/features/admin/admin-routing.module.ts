@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'lista-comunidad', component: ListaComunidadComponent },
       { path: 'registro-comunidad', component: RegistroComunidadComponent },
       { path: 'editar-comunidad', component: EditarComunidadComponent },
-
+      
 
       // otras rutas como dashboard, usuarios, etc.
     ]
