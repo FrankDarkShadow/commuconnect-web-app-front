@@ -33,7 +33,7 @@ export class MembresiaUserService {
   }
 //suspender membresia
   congelarMembresiaConFormulario(idInscripcion: number, datos: FormData): Observable<any> {
-    return this.http.post(`${this.baseUrl}/billing/inscripcion/${idInscripcion}/congelar`, datos);
+    return this.http.post(`${this.baseUrl}/billing/inscripcion/${idInscripcion}/solicitar-congelamiento`, datos);
   }
 
   reactivarMembresia(idInscripcion: number): Observable<any> {

@@ -1,0 +1,157 @@
+<main class="contenido">
+  <div class="bloque-central">
+    <!-- Header con título y botón volver -->
+    <div class="encabezado-servicios">
+      <h2 class="titulo-seccion">Detalles de la solicitud de suspensión</h2>
+      <button class="btn btn-secondary" (click)="volver()">
+        <i class="fas fa-arrow-left"></i> Volver
+      </button>
+    </div>
+
+    <div class="contenido-principal">
+          <!-- Loading state -->
+          <div *ngIf="loading" class="spinner-container">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Cargando...</span>
+            </div>
+            <p class="mt-2">Cargando detalles...</p>
+          </div>
+
+          <!-- Error state -->
+          <div *ngIf="error && !loading" class="alert alert-danger" role="alert">
+            {{ error }}
+            <button class="btn btn-sm btn-outline-danger ml-2" (click)="cargarDetalle()">
+              Reintentar
+            </button>
+          </div>
+
+          <!-- Main content -->
+          <div *ngIf="suspension && !loading && !error" class="row">
+            <!-- Left column - Personal info -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Nombres</label>
+                <div class="form-control-plaintext">{{ suspension.cliente_info.nombres }}</div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Apellidos</label>
+                <div class="form-control-plaintext">{{ suspension.cliente_info.apellidos }}</div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Correo</label>
+                <div class="form-control-plaintext">{{ suspension.cliente_info.email }}</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Comunidad</label>
+                <div class="form-control-plaintext">{{ suspension.comunidad_info.nombre }}</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Razón de suspensión</label>
+                <div class="form-control-plaintext">{{ suspension.motivo }}</div>
+              </div>
+            </div>
+
+            <!-- Right column - Suspension details -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Hora de petición</label>
+                <div class="form-control-plaintext">{{ formatDateTime(suspension.fecha_creacion) }}</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Fecha inicio de suspensión pedida</label>
+                <div class="form-control-plaintext">{{ formatDate(suspension.fecha_inicio) }}</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Fecha fin de suspensión pedida</label>
+                <div class="form-control-plaintext">{{ formatDate(suspension.fecha_fin) }}</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Estado</label>
+                <div class="form-control-plaintext">
+                  <span class="badge" [ngClass]="getColorClass(suspension.color)">
+                    {{ suspension.estado_visual }}
+                  </span>
+                  <div *ngIf="suspension.mensaje" class="small text-muted mt-1">
+                    {{ suspension.mensaje }}
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="suspension.dias_restantes !== undefined" class="form-group">
+                <label class="form-label">Días restantes</label>
+                <div class="form-control-plaintext">{{ suspension.dias_restantes }}</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Archivo de prueba</label>
+                <div class="form-control-plaintext">
+                  <div *ngIf="suspension.archivo; else noArchivo">
+                    <button class="btn btn-sm btn-outline-primary" (click)="descargarArchivo()">
+                      <i class="fas fa-download"></i> Descargar archivo
+                    </button>
+                  </div>
+                  <ng-template #noArchivo>
+                    <span class="text-muted">No se adjuntó archivo</span>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metadata section -->
+          <div *ngIf="suspension && !loading && !error" class="row mt-4">
+            <div class="col-12">
+              <hr>
+              <h5>Información de seguimiento</h5>
+              <div class="row">
+                <div class="col-md-3">
+                  <strong>Creado por:</strong><br>
+                  {{ suspension.creado_por }}
+                </div>
+                <div class="col-md-3">
+                  <strong>Fecha de creación:</strong><br>
+                  {{ formatDateTime(suspension.fecha_creacion) }}
+                </div>
+                <div class="col-md-3">
+                  <strong>Modificado por:</strong><br>
+                  {{ suspension.modificado_por }}
+                </div>
+                <div class="col-md-3">
+                  <strong>Fecha de modificación:</strong><br>
+                  {{ formatDateTime(suspension.fecha_modificacion) }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div *ngIf="suspension && !loading && !error" class="row mt-4">
+            <div class="col-12">
+              <div class="d-flex justify-content-end">
+                <button 
+                  *ngIf="suspension.acciones_disponibles.includes('rechazar')"
+                  class="btn btn-danger mr-2"
+                  (click)="rechazar()"
+                  [disabled]="!suspension.puede_modificar">
+                  RECHAZAR
+                </button>
+                <button 
+                  *ngIf="suspension.acciones_disponibles.includes('aprobar')"
+                  class="btn btn-success"
+                  (click)="aprobar()"
+                  [disabled]="!suspension.puede_modificar">
+                  APROBAR
+                </button>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+</main> 

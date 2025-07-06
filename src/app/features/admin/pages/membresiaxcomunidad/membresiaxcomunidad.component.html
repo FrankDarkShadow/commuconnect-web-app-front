@@ -1,8 +1,21 @@
 <div class="contenedor">
-  <h2>Planes: Mamás primerizas</h2>
+
+  <div class="volver-container">
+      <button class="btn-volver-servicios" (click)="volverAComunidades()">
+        ⬅ Volver
+      </button>
+  </div>
+
+  <br>
+  
+  
+
+  <h2>{{this.comunidad.nombre}}</h2>
   <div class="top-bar">
     <input type="text" placeholder="🔍 Buscar plan" [(ngModel)]="buscarTexto" (input)="aplicarFiltro()" />
-    <button (click)="abrirAgregarPlan(idComunidad)">+ Agregar Plan</button>
+    <button class="btn btn-success bg-success text-white fw-bold" style="background-color: #27ae60; border-color: #27ae60" (click)="abrirAgregarPlan(idComunidad)">
+      <i class="bi bi-plus-circle me-1"></i> Agregar Plan
+    </button>
 
     
   </div>

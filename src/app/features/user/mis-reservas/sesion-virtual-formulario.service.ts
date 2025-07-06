@@ -40,7 +40,7 @@ export class SesionVirtualFormularioService {
   obtenerInfoFormulario(idSesion: number): Observable<SesionVirtualFormularioInfo> {
     const headers = this.getAuthHeaders();
     return this.http.get<SesionVirtualFormularioInfo>(
-      `${this.baseUrl}/formulario/${idSesion}`, 
+      `${this.baseUrl}/reservations/formulario/${idSesion}`, 
       { headers }
     );
   }
@@ -53,7 +53,7 @@ export class SesionVirtualFormularioService {
     formData.append('file', formulario.archivo);
     
     return this.http.post(
-      `${this.baseUrl}/formulario/${formulario.id_sesion}/enviar`, 
+      `${this.baseUrl}/reservations/formulario/${formulario.id_sesion}/enviar`, 
       formData, 
       { headers }
     );

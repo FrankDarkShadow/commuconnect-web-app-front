@@ -1,20 +1,77 @@
 <div class="reserva-detalle-container">
-  <h2>Detalle Reserva</h2>
-  <div class="reserva-info">
-    <p><strong>Servicio:</strong> {{ reserva.nombre_servicio }}</p>
-    <p><strong>Fecha:</strong> {{ reserva.fecha }}</p>
-    <p><strong>Hora:</strong> {{ reserva.hora_inicio }} - {{ reserva.hora_fin }}</p>
+  <h2 class="title">Detalle Reserva</h2>
+
+  <!-- Mostrar loading mientras los datos están siendo cargados -->
+  <div *ngIf="isLoading" class="loading-container">
+    <p>Cargando reserva...</p>
   </div>
 
-  <div class="cancelar-reserva">
-    <button (click)="confirmarCancelacion()">Cancelar Reserva</button>
+  <!-- Información de la reserva -->
+  <div *ngIf="!isLoading" class="reserva-info">
+    <div class="reserva-item" *ngIf="reserva?.fecha">
+      <i class="fa fa-calendar"></i>
+      <p><strong>Fecha:</strong> {{ reserva?.fecha || 'No disponible' }}</p>
+    </div>
+    <div class="reserva-item" *ngIf="reserva?.hora_inicio && reserva?.hora_fin">
+      <i class="fa fa-hourglass-half"></i>
+      <p><strong>Hora:</strong> {{ reserva?.hora_inicio || 'No disponible' }} - {{ reserva?.hora_fin || 'No disponible' }}</p>
+    </div>
+    
+    <!-- Mostrar Ubicación o Link dependiendo de la reserva -->
+    <div class="reserva-item" *ngIf="reserva?.url_meeting">
+      <i class="fa fa-link"></i>
+      <p><strong>Ubicación: </strong>
+        <a href="{{ reserva?.url_meeting }}" target="_blank">{{ reserva?.url_meeting || 'No disponible' }}</a>
+      </p>
+    </div>
+    
+    <div class="reserva-item" *ngIf="!reserva?.url_meeting && reserva?.nombre_local">
+      <i class="fa fa-map-marker"></i>
+      <p><strong>Ubicación: </strong>{{ reserva?.nombre_local || 'No disponible' }}</p>
+    </div>
+
+    <!-- Responsable -->
+    <div class="reserva-item" *ngIf="reserva?.responsable">
+      <i class="fa fa-user"></i>
+      <p><strong>Responsable: </strong>
+        <span>{{ reserva?.responsable }}</span>
+      </p>
+    </div>
   </div>
-  
+
+  <!-- Mensajes de advertencia -->
+  <div *ngIf="!isLoading" class="warning-message">
+    <p><strong>Advertencia:</strong> El sistema solo permitirá cancelaciones con al menos 1 hora de anticipación respecto a la hora de la reserva.</p>
+  </div>
+
+  <div *ngIf="!isLoading" class="warning-message">
+    <p><strong>Advertencia:</strong> Al cancelar, tu cupo será liberado para otro miembro de tu comunidad.</p>
+  </div>
+
+  <!-- Botones para cancelar la reserva y cargar formulario -->
+  <div *ngIf="!isLoading" class="cancelar-reserva">
+    <button (click)="confirmarCancelacion()">Cancelar Reserva</button>
+
+    <!-- Botón para cargar el formulario, solo se muestra si la reserva está en estado 'formulario_pendiente' -->
+    <button *ngIf="showFormularioButton" class="btn btn-primary" (click)="cargarFormulario()">Cargar formulario</button>
+  </div>
+
+  <!-- Modal de confirmación de cancelación -->
   <div *ngIf="showModal" class="modal">
     <div class="modal-content">
       <p>¿Estás seguro de cancelar la reserva?</p>
-      <button (click)="cancelarReserva()">Sí, cancelar</button>
-      <button (click)="cerrarModal()">No, regresar</button>
+      <div class="modal-buttons">
+        <button class="cancel" (click)="cancelarReserva()">Sí, cancelar</button>
+        <button class="close" (click)="cerrarModal()">No, regresar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación de cancelación -->
+  <div *ngIf="showConfirmationMessage" class="modal confirmation-modal">
+    <div class="modal-content">
+      <p>Reserva Cancelada</p>
+      <button class="go-to-calendar" (click)="goToCalendar()">Ir a Mis Reservas</button>
     </div>
   </div>
 </div>

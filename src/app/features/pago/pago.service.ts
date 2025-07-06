@@ -32,7 +32,7 @@ export class PagoService {
 
   //para planes
   getPlanesPorComunidad(idComunidad: number): Observable<Plan[]> {
-    return this.http.get<Plan[]>(`${this.baseUrl}/billing/comunidades/${idComunidad}/planes`);
+    return this.http.get<Plan[]>(`${this.baseUrl}/billing/por-comunidad/${idComunidad}`);
   }
 
   

@@ -25,7 +25,8 @@ export class ComunidadxplanCreateComponent implements OnInit {
 
   ngOnInit(): void {
   this.route.params.subscribe(params => {
-    this.idComunidad = Number(params['id_comunidad']) || 0;
+    this.idComunidad = Number(params['id']) || 0;
+    console.log("mi comunidad:"+this.idComunidad);
     this.cargarPlanesNoAsociados();
   });
 }
@@ -34,6 +35,7 @@ export class ComunidadxplanCreateComponent implements OnInit {
     this.servicio.obtenerPlanesNoAsociados(this.idComunidad).subscribe({
       next: (res) => {
         this.planesNoAsociados = res;
+        console.log("planes no asociados: "+ this.planesNoAsociados);
       },
       error: () => {
         Swal.fire('Error', 'No se pudieron cargar los planes.', 'error');
@@ -65,7 +67,7 @@ export class ComunidadxplanCreateComponent implements OnInit {
     this.servicio.agregarPlanAComunidad(data).subscribe({
       next: () => {
         Swal.fire('Éxito', 'Plan agregado correctamente', 'success');
-        this.router.navigate(['/admin/membresiaxcomunidad']);
+        this.router.navigate(['/admin/membresiaxcomunidad',this.idComunidad]);
       },
       error: (err) => {
         if (err.status === 409) {
@@ -79,6 +81,6 @@ export class ComunidadxplanCreateComponent implements OnInit {
 
 
   cancelar(): void {
-    this.router.navigate(['/admin/lista-comunidad']);
+    this.router.navigate(['/admin/membresiaxcomunidad',this.idComunidad]);
   }
 }

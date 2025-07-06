@@ -39,10 +39,13 @@ import { DetalleSesionPorProfesionalComponent } from './pages/detalle-sesion-por
 import { LocalesComponent } from './pages/locales/locales.component';
 import { CargarLocalesMasivoComponent } from './pages/cargar-locales-masivo/cargar-locales-masivo.component';
 import { CargarSesionesMasivoPresencialComponent } from './pages/cargar-sesiones-masivo/cargar-sesiones-masivo-presencial.component';
+import { SolicitudesSuspensionComponent } from './pages/solicitudes-suspension/solicitudes-suspension.component';
+import { DetalleSuspensionComponent } from './pages/detalle-suspension/detalle-suspension.component';
 import { EditarClienteComponent } from './pages/usuario-crud/editar-cliente/editar-cliente.component';
 import { DetalleClienteComponent } from './pages/usuario-crud/detalle-cliente/detalle-cliente.component';
 import { ListaSesionesPorLocalComponent } from './pages/lista-sesiones-por-local/lista-sesiones-por-local.component';
 import { DetalleSesionPorLocalComponent } from './pages/detalle-sesion-por-local/detalle-sesion-por-local.component';
+
 
 
 
@@ -73,11 +76,12 @@ import { DetalleSesionPorLocalComponent } from './pages/detalle-sesion-por-local
     LocalesComponent,
     CargarLocalesMasivoComponent,
     CargarSesionesMasivoPresencialComponent,
+    SolicitudesSuspensionComponent,
+    DetalleSuspensionComponent,
     EditarClienteComponent,
     DetalleClienteComponent,
     ListaSesionesPorLocalComponent,
     DetalleSesionPorLocalComponent
-
   ],
   imports: [
     CommonModule,

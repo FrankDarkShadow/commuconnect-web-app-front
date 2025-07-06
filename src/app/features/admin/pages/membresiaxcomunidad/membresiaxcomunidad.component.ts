@@ -3,6 +3,7 @@ import { MembresiaxcomunidadService, PlanPorComunidad } from '../../services/mem
 import Swal from 'sweetalert2';
 import { ComunidadxplanCreateComponent } from '../comunidadxplan-create/comunidadxplan-create.component';
 import { Router ,ActivatedRoute} from '@angular/router';
+import { ComunidadService } from '../../services/comunidad.service';
 
 @Component({
   selector: 'app-membresiaxcomunidad',
@@ -16,9 +17,10 @@ export class PlanesPorComunidadComponent implements OnInit {
   idComunidad: number = 0;
   paginaActual = 1;
   entradasPorPagina = 4;
-
+  comunidad : any;
   constructor(
     private planesService: MembresiaxcomunidadService,
+    private comunidadesService:ComunidadService,
     private router: Router,
     private route: ActivatedRoute
     ) {}
@@ -30,10 +32,28 @@ export class PlanesPorComunidadComponent implements OnInit {
     this.idComunidad = Number(params['id']) || 0;
     console.log( this.idComunidad);
     this.cargarPlanes();
+
+    this.cargarDetalleDeComunidad();
+
   });
 }
 
+  cargarDetalleDeComunidad():void{
 
+this.comunidadesService.obtenerPorId(this.idComunidad).subscribe({
+      next: (res) => {
+        
+        this.comunidad = res;
+
+        console.log(this.comunidad.nombre);
+      
+      },
+      error: () => {
+        Swal.fire('Error', 'No se pudieron cargar los planes.', 'error');
+      }
+    });
+
+  }
 
 
   cargarPlanes(): void {
@@ -100,5 +120,13 @@ export class PlanesPorComunidadComponent implements OnInit {
 
   cambiarPagina(nueva: number): void {
     this.paginaActual = nueva;
+  }
+
+  volverAComunidades() {
+
+    this.router.navigate(
+      ['/admin/lista-comunidad']
+    );
+
   }
 }

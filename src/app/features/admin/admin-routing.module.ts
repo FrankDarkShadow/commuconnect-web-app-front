@@ -25,6 +25,8 @@ import { CargarProfesionalesMasivoComponent } from './pages/profesionales-servic
 import { CargarSesionesMasivoComponent } from './pages/profesionales-servicio/cargar-sesiones-masivo/cargar-sesiones-masivo.component';
 import { ListaSesionesPorProfesionalesComponent } from './pages/lista-sesiones-por-profesionales/lista-sesiones-por-profesionales.component';
 import { DetalleSesionPorProfesionalComponent } from './pages/detalle-sesion-por-profesional/detalle-sesion-por-profesional.component';
+import { SolicitudesSuspensionComponent } from './pages/solicitudes-suspension/solicitudes-suspension.component';
+import { DetalleSuspensionComponent } from './pages/detalle-suspension/detalle-suspension.component';
 
 
 import {DetalleClienteComponent} from './pages/usuario-crud/detalle-cliente/detalle-cliente.component';
@@ -65,6 +67,10 @@ const routes: Routes = [
       { path: 'cargar-sesiones-masivo', component: CargarSesionesMasivoComponent },
       { path: 'lista-sesiones-por-profesionales/:id', component: ListaSesionesPorProfesionalesComponent},
       {path: 'detalle-sesion-por-profesional/:id', component:DetalleSesionPorProfesionalComponent},
+
+      { path: 'suspensiones', component: SolicitudesSuspensionComponent },
+      { path: 'suspensiones/detalle/:id', component: DetalleSuspensionComponent },
+      // otras rutas como dashboard, usuarios, etc.
       {path:'detalle-cliente/:id',component:DetalleClienteComponent},
       {path:'editar-cliente/:id',component:EditarClienteComponent},
       {
@@ -73,7 +79,6 @@ const routes: Routes = [
       },
       {path:'lista-sesiones-por-local/:id',component:ListaSesionesPorLocalComponent},
       {path:'detalle-sesion-por-local/:id',component:DetalleSesionPorLocalComponent}
-
 
     ]
   }

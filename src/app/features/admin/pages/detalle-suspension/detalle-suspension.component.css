@@ -1,0 +1,252 @@
+.contenido {
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.bloque-central {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.encabezado-servicios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
+
+.titulo-seccion {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.contenido-principal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 30px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.875rem;
+}
+
+.form-control-plaintext {
+  padding: 0.375rem 0;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #212529;
+  background-color: transparent;
+  border: solid transparent;
+  border-width: 1px 0;
+  min-height: 1.5rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.badge-info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.spinner-border {
+  width: 2rem;
+  height: 2rem;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-weight: 500;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-right: 0.75rem;
+}
+
+.btn:last-child {
+  margin-right: 0;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.small {
+  font-size: 0.75rem;
+}
+
+hr {
+  border-top: 1px solid #dee2e6;
+  margin: 1rem 0;
+}
+
+h5 {
+  color: #495057;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+.alert {
+  border-radius: 8px;
+  border: none;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.spinner-container {
+  padding: 40px;
+  text-align: center;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+}
+
+.form-control-plaintext {
+  background-color: #f8f9fa;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  font-size: 0.875rem;
+  color: #495057;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+} 

@@ -26,18 +26,16 @@ export class CargarSesionesMasivoComponent {
   };
 
   columnasRequeridas = [
-    'id_servicio',
-    'modalidad',
-    'fecha_inicio',
-    'id_comunidad',
-    'id_profesional',
-    'url_archivo'
+  'id_servicio',
+  'id_profesional',
+  'fecha_inicio',
+  'fecha_fin',
+  'url_meeting',
+  'url_archivo'
   ];
 
   columnasOpcionales = [
-    'id_local',
-    'capacidad',
-    'url_meeting'
+    'descripcion'
   ];
 
   constructor(
@@ -97,39 +95,52 @@ export class CargarSesionesMasivoComponent {
     this.excelHeaders = [];
     this.datosValidos = false;
   }
+  
+async subirArchivo() {
+  if (!this.archivoSeleccionado || !this.datosValidos) return;
 
-  async subirArchivo() {
-    if (!this.archivoSeleccionado || !this.datosValidos) return;
-    this.procesando = true;
-    const formData = new FormData();
-    formData.append('archivo', this.archivoSeleccionado);
+  this.procesando = true;
 
-    this.http.post(`${environment.apiUrl}/reservations/sesiones/carga-masiva`, formData)
-      .subscribe({
-        next: (resp: any) => {
-          this.resumenCarga = resp.resumen;
-          this.notificationData = {
-            type: 'success',
-            title: resp.mensaje || 'Carga masiva completada',
-            message: 'Revisa el resumen de la carga más abajo.'
-          };
-          this.showNotification = true;
-          this.eliminarArchivo();
-        },
-        error: (err) => {
-          this.notificationData = {
-            type: 'error',
-            title: 'Error',
-            message: err?.error?.mensaje || 'Error al cargar sesiones.'
-          };
-          this.showNotification = true;
-        }
-      }).add(() => this.procesando = false);
-  }
+  const formData = new FormData();
+  formData.append('archivo', this.archivoSeleccionado);
 
-  onNotificationClose() {
-    this.showNotification = false;
-  }
+  this.http.post(`${environment.apiUrl}/reservations/carga-masiva`, formData)
+    .subscribe({
+      next: (resp: any) => {
+        console.log("✅ Respuesta exitosa:", resp);
+
+        // Si todo salió bien, asignamos el resumen recibido
+        this.resumenCarga = resp?.resumen ?? {
+          insertados: 0,
+          errores: []
+        };
+
+        // Eliminar archivo después de procesar
+        this.eliminarArchivo();
+      },
+      error: (err) => {
+        console.error("❌ Error de carga:", err);
+
+        // Si el backend devuelve un resumen válido incluso en error
+        const resumen = err?.error?.resumen;
+
+        this.resumenCarga = resumen ?? {
+          insertados: 0,
+          errores: [err?.error?.mensaje || 'Error al cargar sesiones.']
+        };
+      }
+    })
+    .add(() => {
+      this.procesando = false;
+    });
+}
+
+get erroresComoArray(): string[] {
+  const errores = this.resumenCarga?.errores;
+  if (Array.isArray(errores)) return errores;
+  if (typeof errores === 'string') return [errores];
+  return ['Error al cargar sesiones.'];
+}
 
   volver() {
     this.router.navigate(['/admin/gestion-servicios']);

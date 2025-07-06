@@ -2,24 +2,86 @@
   margin: 20px;
 }
 
+h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
 .reserva-info {
   margin-bottom: 20px;
 }
 
+.reserva-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.reserva-item i {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #007bff;
+}
+
+.reserva-item p {
+  margin: 0;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.reserva-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.reserva-item a:hover {
+  text-decoration: underline;
+}
+
+.warning-message {
+  color: #c82333;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
 .cancelar-reserva {
   margin-top: 20px;
+  display: flex;
+  justify-content: flex-start; /* Alinea los botones a la izquierda */
+  gap: 10px; /* Espacio entre los botones */
 }
 
 button {
-  background-color: #f44336;
-  color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 button:hover {
+  opacity: 0.8;
+}
+
+/* Estilo para el botón "Cancelar Reserva" */
+.cancelar-reserva button:first-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.cancelar-reserva button:first-child:hover {
   background-color: #e53935;
+}
+
+/* Estilo para el botón "Cargar formulario" */
+.cancelar-reserva button:last-child {
+  background-color: #007bff;
+  color: white;
+}
+
+.cancelar-reserva button:last-child:hover {
+  background-color: #0056b3;
 }
 
 .modal {
@@ -39,4 +101,61 @@ button:hover {
   padding: 20px;
   border-radius: 8px;
   text-align: center;
+  width: 50%;
+  max-width: 500px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  width: 48%;
+}
+
+.cancel {
+  background-color: #f44336;
+}
+
+.cancel:hover {
+  background-color: #e53935;
+}
+
+.close {
+  background-color: #8e8e8e;
+}
+
+.close:hover {
+  background-color: #666666;
+}
+
+.confirmation-modal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.confirmation-message {
+  background-color: #28a745;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 50%;
+}
+
+.go-to-calendar {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.go-to-calendar:hover {
+  background-color: #0056b3;
 }

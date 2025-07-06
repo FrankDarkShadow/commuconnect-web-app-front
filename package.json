@@ -28,6 +28,7 @@
     "angular-calendar": "^0.31.1",
     "bootstrap": "^5.3.5",
     "date-fns": "^4.1.0",
+    "font-awesome": "^4.7.0",
     "jwt-decode": "^4.0.0",
     "ngx-pagination": "^6.0.3",
     "proyecto-commu-connect": "file:",

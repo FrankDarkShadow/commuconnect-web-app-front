@@ -1,0 +1,62 @@
+<div class="container-fluid vh-100 d-flex p-0">
+  <!-- Columna izquierda con imagen -->
+  <div class="col-md-6 p-0">
+    <img
+      src="assets/parejaCorriendo.jpg"
+      class="img-fluid h-100 w-100"
+      style="object-fit: cover;"
+      alt="imagen izquierda"
+    />
+  </div>
+
+  <!-- Columna derecha con formulario -->
+  <div class="col-md-6 d-flex flex-column justify-content-center align-items-center bg-white position-relative">
+
+    <!-- Botón Ir a Página Principal -->
+    <a
+      routerLink="/presentacion/inicio"
+      class="btn btn-outline-success position-absolute top-0 end-0 m-3"
+    >
+      Ir a Página Principal
+    </a>
+
+    <!-- Contenido centrado -->
+    <div class="w-75" style="max-width: 400px;">
+      <h2 class="text-center fw-bold mb-2">Recuperar <br /> contraseña</h2>
+      <p class="text-center text-muted mb-4">
+        Ingresa tu correo electrónico asociado a tu cuenta
+      </p>
+
+      <form (ngSubmit)="enviarLink()" #form="ngForm">
+        <div class="mb-3">
+          <label class="form-label">Correo Electrónico</label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="bi bi-key-fill"></i>
+            </span>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Correo Electrónico"
+              [(ngModel)]="email"
+              name="email"
+              required
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          [disabled]="form.invalid"
+        >
+          Seguir
+        </button>
+      </form>
+
+      <div *ngIf="mensaje" class="alert alert-success text-center mt-3">
+        {{ mensaje }}
+      </div>
+    </div>
+  </div>
+</div>

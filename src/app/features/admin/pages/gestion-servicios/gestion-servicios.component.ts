@@ -80,7 +80,7 @@ export class GestionServiciosComponent implements OnInit {
 
     this.serviciosService.eliminarServicio(this.servicioAEliminar.id_servicio).subscribe({
       next: () => {
-        this.showNotificationMessage('success', 'Servicio eliminado', `El servicio "${this.servicioAEliminar!.nombre}" ha sido eliminado exitosamente.`);
+        this.showNotificationMessage('success', 'Cambio de estado confirmado', `El servicio "${this.servicioAEliminar!.nombre}" ha sido cambiado de estado exitosamente.`);
         this.servicioAEliminar = null;
         this.showConfirmDialog = false;
         this.cargarServicios();
@@ -130,7 +130,18 @@ export class GestionServiciosComponent implements OnInit {
 
   get confirmationMessage(): string {
     return this.servicioAEliminar 
-      ? `¿Estás seguro de eliminar el servicio "${this.servicioAEliminar.nombre}"? Esta acción no se puede deshacer.`
+      ? `¿Estás seguro de cambiar de estado al servicio "${this.servicioAEliminar.nombre}"? `
       : '¿Estás seguro de realizar esta acción?';
   }
+
+  get serviciosFiltrados(): Servicio[] {
+  const termino = this.terminoBusqueda.toLowerCase().trim();
+  if (!termino) return this.servicios;
+
+  return this.servicios.filter(servicio =>
+    servicio.nombre.toLowerCase().includes(termino) ||
+    servicio.descripcion.toLowerCase().includes(termino)
+  );
+}
+
 } 

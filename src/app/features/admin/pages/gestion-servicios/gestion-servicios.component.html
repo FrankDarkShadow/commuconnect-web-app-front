@@ -22,7 +22,9 @@
 
     <!-- Grid de servicios -->
     <div class="grid-servicios">
-      <div class="tarjeta-servicio" *ngFor="let servicio of servicios">
+      
+      <div class="tarjeta-servicio" *ngFor="let servicio of serviciosFiltrados">
+
         
         <!-- Imagen del servicio -->
         <div class="imagen-servicio">
@@ -44,6 +46,14 @@
                                   [class.virtual]="servicio.modalidad === 'Virtual'">
             {{ servicio.modalidad }}
           </span>
+          <p>
+          <p>
+            Estado:
+            <span class="badge" [ngClass]="servicio.estado ? 'bg-success' : 'bg-danger'">
+              {{ servicio.estado ? 'Activo' : 'Inactivo' }}
+            </span>
+          </p>
+
         </div>
 
         <!-- Menú de opciones -->
@@ -58,11 +68,12 @@
               ⋮
             </button>
             <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton' + servicio.id_servicio">
-              <li>
-                <a class="dropdown-item" href="javascript:void(0)" (click)="editarServicio(servicio.id_servicio)">
-                  <i class="bi bi-pencil"></i> Editar visualización
-                </a>
-              </li>
+            <li *ngIf="servicio.estado">
+              <a class="dropdown-item" href="javascript:void(0)" (click)="editarServicio(servicio.id_servicio)">
+                <i class="bi bi-pencil"></i> Editar visualización
+              </a>
+            </li>
+
 
               <li>
                 <!-- Mostrar "Ver locales" para servicios presenciales -->
@@ -84,7 +95,8 @@
               <li><hr class="dropdown-divider"></li>
               <li>
                 <a class="dropdown-item text-danger" href="javascript:void(0)" (click)="eliminarServicio(servicio)">
-                  <i class="bi bi-trash"></i> Eliminar servicio
+                  <i class="bi bi-toggle-on"></i> Cambiar de estado
+
                 </a>
               </li>
             </ul>
@@ -105,9 +117,9 @@
 <!-- Confirmation Dialog -->
 <app-confirmation-dialog
   [show]="showConfirmDialog"
-  title="Confirmar eliminación"
+  title="Confirmar cambio de estado"
   [message]="confirmationMessage"
-  confirmText="Eliminar"
+  confirmText="Cambiar"
   cancelText="Cancelar"
   type="danger"
   (confirm)="confirmarEliminacion()"

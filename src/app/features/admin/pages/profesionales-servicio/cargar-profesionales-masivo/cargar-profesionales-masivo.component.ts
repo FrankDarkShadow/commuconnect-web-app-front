@@ -117,7 +117,7 @@ export class CargarProfesionalesMasivoComponent {
             message: 'Revisa el resumen de la carga más abajo.'
           };
           this.showNotification = true;
-          this.eliminarArchivo();
+          //this.eliminarArchivo();
         },
         error: (err) => {
           this.notificationData = {
